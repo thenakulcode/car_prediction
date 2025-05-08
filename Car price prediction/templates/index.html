@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; padding: 30px; }
+        form { background: #fff; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; }
+        .result { margin-top: 20px; font-size: 18px; color: #333; }
+    </style>
+</head>
+<body>
+    <h2 align="center">Car Price Prediction</h2>
+    <form action="/predict" method="post">
+        <input type="number" step="any" name="symboling" placeholder="Symboling" required>
+        <input type="number" step="any" name="wheelbase" placeholder="Wheel Base" required>
+        <input type="number" step="any" name="carlength" placeholder="Car Length" required>
+        <input type="number" step="any" name="carwidth" placeholder="Car Width" required>
+        <input type="number" step="any" name="carheight" placeholder="Car Height" required>
+        <input type="number" name="curbweight" placeholder="Curb Weight" required>
+        <input type="number" name="enginesize" placeholder="Engine Size" required>
+        <input type="number" step="any" name="boreratio" placeholder="Bore Ratio" required>
+        <input type="number" step="any" name="stroke" placeholder="Stroke" required>
+        <input type="number" step="any" name="compressionratio" placeholder="Compression Ratio" required>
+        <input type="number" name="horsepower" placeholder="Horsepower" required>
+        <input type="number" name="peakrpm" placeholder="Peak RPM" required>
+        <input type="number" name="citympg" placeholder="City MPG" required>
+        <input type="number" name="highwaympg" placeholder="Highway MPG" required>
+
+        <select name="fueltype" required>
+            <option value="">Fuel Type</option>
+            <option value="gas">Gas</option>
+            <option value="diesel">Diesel</option>
+        </select>
+
+        <select name="aspiration" required>
+            <option value="">Aspiration</option>
+            <option value="std">Standard</option>
+            <option value="turbo">Turbo</option>
+        </select>
+
+        <select name="doornumber" required>
+            <option value="">Number of Doors</option>
+            <option value="two">Two</option>
+            <option value="four">Four</option>
+        </select>
+
+        <select name="carbody" required>
+            <option value="">Car Body</option>
+            <option value="convertible">Convertible</option>
+            <option value="hardtop">Hardtop</option>
+            <option value="hatchback">Hatchback</option>
+            <option value="sedan">Sedan</option>
+            <option value="wagon">Wagon</option>
+        </select>
+
+        <select name="drivewheel" required>
+            <option value="">Drive Wheel</option>
+            <option value="fwd">FWD</option>
+            <option value="rwd">RWD</option>
+            <option value="4wd">4WD</option>
+        </select>
+
+        <button type="submit">Predict</button>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </form>
+</body>
+</html>
